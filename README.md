@@ -7,3 +7,16 @@ A python tool to download PyPI packages and create the local structure to run a 
 This tool is totally based on pip.
 
 The user needs to provide via the command line a requirement file and the tool will invoke pip to download all the packages required. Moreover the user can select a directory where the packages will be moved in order to mimick the required structure of the PyPI index.
+
+# Installation
+Just use pip
+```bat
+python -m pip install pypiprivatizer
+```
+
+# Usage
+From your python enviroment:
+```bat
+python -m pypiprivatizer -h
+```
+to get all CLI options.
