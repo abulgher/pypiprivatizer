@@ -12,10 +12,24 @@ import argparse
 import re
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 
-def main():
+def main_parser():
+    parser = argparse.ArgumentParser(description='''
+                                     Tool for downloading packages from PyPI and
+                                     made them available for a local private index
+                                     ''')
+    parser.add_argument('-r', type=Path, dest='requirements_file',
+                        default=(Path.cwd() / Path('requirements.txt')),
+                        help='A requirements file with the packages to be downloaded.')
+    parser.add_argument('-d', '--output-dir', type=Path, dest='output_dir',
+                        default=(Path.cwd()), help='The directory where the private index is stored.')
+    return parser
+
+
+def main(cli_args, prog):
     """Execute the module.
 
     The module takes two input parameters, the requirements file and the
@@ -33,16 +47,10 @@ def main():
 
     """
     # command line arguments. only for logging level at the moment.
-    parser = argparse.ArgumentParser(description='''
-                                     Tool for downloading packages from PyPI and
-                                     made them available for a local private index
-                                     ''')
-    parser.add_argument('-r', type=Path, dest='requirements_file',
-                        default=(Path.cwd() / Path('requirements.txt')),
-                        help='A requirements file with the packages to be downloaded.')
-    parser.add_argument('-d', '--output-dir', type=Path, dest='output_dir',
-                        default=(Path.cwd()), help='The directory where the private index is stored.')
-    args = parser.parse_args()
+    parser = main_parser()
+    if prog:
+        parser.prog = prog
+    args = parser.parse_args(cli_args)
 
     # check that the give parameters are valid.
     if not args.requirements_file.exists():
@@ -94,5 +102,5 @@ def main():
     print('Packages downloaded and trasfered to destination directory')
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == '__main__':  # pragma: no cover
+    main(sys.argv[1:], 'python -m pypiprivatizer')
