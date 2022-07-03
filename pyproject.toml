@@ -26,7 +26,7 @@ include_trailing_comma = true
 
 [project]
 name = "pypiprivatizer"
-version = "0.0.12"
+version = "0.1.0"
 authors = [
   { name="Antonio Bulgheroni", email="antonio.bulgheroni@gmail.com" },
 ]
