@@ -2,6 +2,9 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["pypiprivatizer"]
+
 [tool.black]
 line-length = 119
 include = '.pyi?$'
@@ -26,7 +29,7 @@ include_trailing_comma = true
 
 [project]
 name = "pypiprivatizer"
-version = "0.1.1"
+version = "1.0.0"
 authors = [
   { name="Antonio Bulgheroni", email="antonio.bulgheroni@gmail.com" },
 ]
