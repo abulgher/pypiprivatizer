@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 119
+include = '.pyi?$'
+exclude = '''
+/(
+    .git
+    | .hg
+    | .mypy_cache
+    | .tox
+    | .venv
+    | _build
+    | buck-out
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+line_length = 119
+multi_line_output = 3
+include_trailing_comma = true
+
+[project]
+name = "pypiprivatizer"
+version = "0.0.1"
+authors = [
+  { name="Antonio Bulgheroni", email="antonio.bulgheroni@gmail.com" },
+]
+
+description = "A python toolkit to download packages from PyPI and copy them in a directory compatible with the pip index."
+readme = "README.md"
+license = { file="LICENSE.txt" }
+requires-python = ">=3.9.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Win-64",
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/abulgher/pypiprivatizer"
