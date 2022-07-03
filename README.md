@@ -1,4 +1,5 @@
 [![Build Python application](https://github.com/abulgher/pypiprivatizer/actions/workflows/python-app.yml/badge.svg)](https://github.com/abulgher/pypiprivatizer/actions/workflows/python-app.yml)
+[![Upload Python Package](https://github.com/abulgher/pypiprivatizer/actions/workflows/publish-python.yml/badge.svg)](https://github.com/abulgher/pypiprivatizer/actions/workflows/publish-python.yml)
 
 # pypiprivatizer
 A python tool to download PyPI packages and create the local structure to run a private index
