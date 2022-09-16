@@ -15,6 +15,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+VERSION = 'v1.0.1'
+
 
 def main_parser():
     parser = argparse.ArgumentParser(description='''
@@ -26,6 +28,10 @@ def main_parser():
                         help='A requirements file with the packages to be downloaded.')
     parser.add_argument('-d', '--output-dir', type=Path, dest='output_dir',
                         default=(Path.cwd()), help='The directory where the private index is stored.')
+
+    parser.add_argument('-v', '--version', action='store_const', const=True, default=False,
+                        dest='version', help='Print the version number and exit.')
+
     return parser
 
 
@@ -46,11 +52,15 @@ def main(cli_args, prog):
     None.
 
     """
-    # command line arguments. only for logging level at the moment.
+    # command line arguments.
     parser = main_parser()
     if prog:
         parser.prog = prog
     args = parser.parse_args(cli_args)
+
+    if args.version:
+        print(f'{parser.prog} is version {VERSION}.')
+        return
 
     # check that the give parameters are valid.
     if not args.requirements_file.exists():
@@ -95,7 +105,7 @@ def main(cli_args, prog):
             (args.output_dir / Path(norm_name)).mkdir(exist_ok=True, parents=True)
             package_name = file.name
             shutil.copy(file, (args.output_dir
-                        / Path(norm_name) / package_name))
+                               / Path(norm_name) / package_name))
 
     shutil.rmtree(tmp_dir)
 
