@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-The pyprivatizer module
+The pypiprivatizer module
 
 This module allows to download from PyPI a list of packages satisfying a
-requirement file and to copy them to a local directory with a struture that
+requirement file and to copy them to a local directory with a structure that
 resemble the one of a private python index.
 
 """
@@ -65,12 +65,12 @@ def main(cli_args, prog):
     # check that the give parameters are valid.
     if not args.requirements_file.exists():
         raise OSError(
-            f'Requirement file {str(args.requirements_file)} doesn\'t exist')
+            f"Requirement file {str(args.requirements_file)} doesn't exist")
     if not args.requirements_file.is_file():
         raise OSError(
-            f'Requirement file {str(args.requirements_file)} isn\'t a file')
+            f"Requirement file {str(args.requirements_file)} isn't a file")
     if not args.output_dir.is_dir() and args.output_dir.exists():
-        raise OSError(f'Output dir {str(args.output_dir)} isn\'t a directory')
+        raise OSError(f"Output dir {str(args.output_dir)} isn't a directory")
 
     if not args.output_dir.exists():
         args.output_dir.mkdir(parents=True)
@@ -109,7 +109,7 @@ def main(cli_args, prog):
 
     shutil.rmtree(tmp_dir)
 
-    print('Packages downloaded and trasfered to destination directory')
+    print('Packages downloaded and transferred to destination directory')
 
 
 if __name__ == '__main__':  # pragma: no cover
